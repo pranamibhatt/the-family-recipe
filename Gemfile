@@ -5,15 +5,18 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'paperclip'
 gem 'tinymce-rails'
+gem 'json'
+
+gem 'thin'
+
 
 #ENV['CFLAGS'] = '-I/usr/include/tesseract -I/usr/include/leptonica' 
 #ENV['LDFLAGS'] = '-L/usr/lib -L/usr/lib/tesseract'
 
-gem 'tesseract-ocr'
+#gem 'tesseract-ocr'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0.beta4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.0.beta1'
 # Use Uglifier as compressor for JavaScript assets
@@ -51,5 +54,17 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+	
 end
+
+group :development, :test do
+	gem 'sqlite3-ruby'
+end
+
+group :production do
+	gem 'pg'
+end
+
+
 
