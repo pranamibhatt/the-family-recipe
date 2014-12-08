@@ -13,7 +13,7 @@ gem 'thin'
 #ENV['CFLAGS'] = '-I/usr/include/tesseract -I/usr/include/leptonica' 
 #ENV['LDFLAGS'] = '-L/usr/lib -L/usr/lib/tesseract'
 
-gem 'tesseract-ocr'
+#gem 'tesseract-ocr'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0.beta4'
 # Use sqlite3 as the database for Active Record
