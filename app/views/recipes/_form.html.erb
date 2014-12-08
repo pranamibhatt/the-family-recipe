@@ -46,17 +46,23 @@
     <%= error_span(@recipe[:instructions]) %>
   </div>
 
-<div class="control-group">
+  <div class="control-group">
     <%= f.label :tag, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :tag, :class => 'form-control' %>
     </div>
 <%= error_span(@recipe[:tag]) %>
   </div>
-	<div class="field">
-		<%= f.label :image %> <br />
-		<%= f.file_field :image %> 
-	</div>
+<%= tinymce %>
+<% end %>
+  <%= form_for :recipe, :url => recipes_new_path do |f| %>
+  <div class="field">
+     <%= f.label :image %> <br />
+     <%= f.file_field :image    %> 
+     <%= f.submit "Submit" , name: "image",value: ":image"  %>
+  </div>
+  <% end %> 
+<%= form_for @recipe, :html => { :class => "form-horizontal recipe" , :multipart => true } do |f| %>
 
   <div style="padding-top: 25px">
      <%= f.submit nil, :class => 'btn btn-primary' %>
@@ -65,4 +71,3 @@
   </div>
 <% end %>
 
-<%= tinymce %>

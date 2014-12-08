@@ -22,7 +22,34 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
-    @recipe = Recipe.new
+       @recipe = Recipe.new
+       puts "In Run Controller"
+    if params[:image]
+       puts "In Run Controller"
+
+       jpg = Base64.decode64(params[:image]);
+    
+       puts "Creating directory"
+       %x(mkdir tessdir)
+
+       puts "Saving image"
+       file = File.open("tessdir/sample.jpg",'wb')
+       file.write jpg
+	  
+       puts "Starting tesseract"
+       %x(tesseract tessdir/sample.jpg tessdir/out -l #{params[:language]})
+    
+       puts "Reading result"
+       file = File.open("tessdir/out.txt", "rb")
+       contents = file.read
+    
+       puts "removing tessdir"
+       %x(rm -Rf tessdir)
+    
+       render text: contents
+       return
+    end
+
   end
 
   # GET /recipes/1/edit
@@ -43,8 +70,6 @@ class RecipesController < ApplicationController
        render :action => 'home'
        return
     end
-
-
 
     @recipe = Recipe.new(recipe_params)
 
